@@ -20,12 +20,12 @@ app.use((req, res, next) => {
 app.use('/api/workouts', workoutRoutes) //  attaches all those routes attached to router from workouts.js to 'app'
 
 //connect to db
-mongoose.connect(process.env.MONGO_URI) //   asyncronous so it returns a promise
+mongoose.connect(process.env.MONG_URI) //   asyncronous so it returns a promise
     .then(() => {
         // listen for requests
         app.listen(process.env.PORT, () => {
-            console.log('listening on port ', process.env.PORT)
-        })// we dont want to start listening for requests until we're connected so it goes in here now.
+            console.log('connected to db and listening on port ', process.env.PORT)
+        }) // we dont want to start listening for requests until we're connected so it goes in here now.
     }) //   fire a function when its complete
     .catch((error) => {
         console.log(error)
